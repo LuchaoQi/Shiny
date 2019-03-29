@@ -1,0 +1,14 @@
+```{r}
+library(TCseq)
+df = read.table('expression.txt',row.names = 1,header = 1)
+dat = timeclust(as.matrix(df),algo='cm',k = 3 ,standardize = TRUE,iter.max =15)
+timeclustplot(dat,categories = 'tp',cols = 1,axis.text.size = 11)[0]
+```
+```{r}
+df_pca <- prcomp(df)
+df_out <- as.data.frame(df_pca$x)
+# df_out$group <- sapply( strsplit(as.character(row.names(df)), "_"), "[[", 1 )
+df_out = merge(df_out,as.data.frame(dat@cluster),by ='row.names',all.x=T)
+ggplot(df_out,aes(x=PC1,y=PC2,color= dat@cluster ))+geom_point()
+```
+
