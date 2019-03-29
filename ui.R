@@ -1,5 +1,7 @@
 library(shiny)
 library(shinydashboard)
+library(ggfortify)
+library(plotly)
 
 
 header <- dashboardHeader(title = "Uploading Files")
