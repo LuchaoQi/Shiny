@@ -44,7 +44,8 @@ sidebar <- dashboardSidebar(
 
 body <- dashboardBody(tableOutput("contents"),
                       plotOutput("clustering"),
-                      plotlyOutput("pca")
+                      plotlyOutput("threed_clustering"),
+                      plotOutput('cluster_compare')
                       )
 
 
