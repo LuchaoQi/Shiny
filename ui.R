@@ -31,8 +31,8 @@ sidebar <- dashboardSidebar(
                selected = "head"),
   
   tags$hr(), #horizontal line
-  selectInput('algo','Algorithm',choices = list('kmeans' = 'km','partitioning around medoids' = 'pam',
-                                                'hierachical clustering' = 'hc','cmeans' = 'cm'),selected = 'cm'),
+  # selectInput('algo','Algorithm',choices = list('kmeans' = 'km','partitioning around medoids' = 'pam',
+  #                                               'hierachical clustering' = 'hc','cmeans' = 'cm'),selected = 'cm'),
   # textInput("algo","Algorithm:Options are 'km' (kmeans), 'pam' (partitioning around medoids), 
   #           'hc' (hierachical clustering), 'cm' (cmeans).",value = "cm"),
   numericInput('k',"Number of clusters",value = 3)
@@ -43,7 +43,7 @@ sidebar <- dashboardSidebar(
 
 
 body <- dashboardBody(tableOutput("contents"),
-                      plotOutput("clustering"),
+                      plotOutput("heatmap"),
                       plotlyOutput("threed_clustering"),
                       plotOutput('cluster_compare')
                       )

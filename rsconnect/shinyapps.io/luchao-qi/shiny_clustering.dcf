@@ -1,0 +1,12 @@
+name: shiny_clustering
+title:
+username:
+account: luchao-qi
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 840210
+bundleId: 1987994
+url: https://luchao-qi.shinyapps.io/shiny_clustering/
+when: 1554427128.89106
+asMultiple: FALSE
+asStatic: FALSE

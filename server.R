@@ -1,8 +1,8 @@
 library(shiny)
 library(shinydashboard)
-library(caret)
+# library(caret)
 library(tidyverse)
-library(TCseq)
+# library(TCseq)
 library(ggplot2)
 library(plotly)
 library(ggfortify)
@@ -12,6 +12,7 @@ library(gplots)
 library(scales)
 library(Rtsne)
 library(reshape)
+library(data.table)
 
 server <- function(input, output) {
   
@@ -37,25 +38,50 @@ server <- function(input, output) {
       return(df())
     }
   })
+
   
-  
-  
-  dat = reactive({
-    dat = timeclust(as.matrix(df()),
-                    algo = input$algo,
-                    k = input$k,
-                    standardize = TRUE)
-                    # iter.max=input$iter.max)
+  #heatmap
+  # ord <- reactive({hclust( dist(scale(df()), method = "euclidean"), method = "ward.D" )$order})
+  dat_heatmap = reactive({ 
+    dat = cbind(df(),kmeans(df(),input$k)$cluster)
+    # row.names(dat) = dat[,1]
+    # dat = dat[-1]
+    # dat = melt(read.table(input$file1$datapath,header = 1)[ord(),])
+    colnames(dat)[dim(dat)[2]] = 'Cluster'
+    dat = dat[order(dat$'Cluster'),][-dim(dat)[2]]
+    dat = melt(setDT(dat, keep.rownames = TRUE), "rn")
+    # dat$rn = factor(dat$rn,levels = dat$rn)
     return(dat)
+    # return(melt(as.matrix(dat)))
+    # [,c('X2','X1','value')]
   })
   
-  output$clustering = renderPlot({
+  output$heatmap = renderPlot({
     if(is.null(input$file1)){return()}
-    timeclustplot(dat(),categories = "time points",col =1,axis.text.size = 11)[0]
+
+    ggplot( dat_heatmap(), aes(x = variable,y = factor(rn,levels = unique(rn))) )+
+      geom_tile(aes(fill = value))+
+      scale_fill_gradient(low="grey90", high="red") +
+      labs(x= 'exp',y = 'gene')+
+      theme(axis.text.y = element_text(size = 6))
   })
   
-  dat_cluster_result = reactive({
-    dat = merge(as.data.frame(prcomp(df())$x),as.data.frame(dat()@cluster),by ='row.names',all.x=T)
+  # dat = reactive({
+  #   dat = timeclust(as.matrix(df()),
+  #                   algo = input$algo,
+  #                   k = input$k,
+  #                   standardize = TRUE)
+  #                   # iter.max=input$iter.max)
+  #   return(dat)
+  # })
+  
+  # output$clustering = renderPlot({
+  #   if(is.null(input$file1)){return()}
+  #   timeclustplot(dat(),categories = "time points",col =1,axis.text.size = 11)[0]
+  # })
+  
+  dat_pca_result = reactive({
+    dat = merge(as.data.frame(prcomp(df())$x),as.data.frame(kmeans(df(),input$k)$cluster),by ='row.names',all.x=T)
     colnames(dat)[dim(dat)[2]] = 'Cluster'
     dat = dat[order(dat$Cluster),]
     return(dat)
@@ -69,16 +95,11 @@ server <- function(input, output) {
   # })
   
   output$threed_clustering <- renderPlotly({
-    plot_ly(x = dat_cluster_result()$PC1, y = dat_cluster_result()$PC2, z = dat_cluster_result()$PC3, type="scatter3d", mode="markers", color= dat_cluster_result()$Cluster)
+    plot_ly(x = dat_pca_result()$PC1, y = dat_pca_result()$PC2, z = dat_pca_result()$PC3, type="scatter3d", mode="markers", color= dat_pca_result()$Cluster)
   })
   
   
-  #heatmap
-  ord <- reactive({hclust( dist(scale(df()), method = "euclidean"), method = "ward.D" )$order})
-  dat_heatmap = reactive({ 
-    dat = melt(read.table(input$file1$datapath,header = 1)[ord(),])
-    return(dat)
-  })
+
   # compare
   
   pca = reactive({prcomp(t(df()))})
@@ -92,10 +113,10 @@ server <- function(input, output) {
       geom_point()+labs(x= 'tsne 1', y = 'tsne 2', title = 'tsne'),
     ggplot(as.data.frame(Umap()$layout),aes(x = V1,y=V2))+
       geom_point()+labs(x= 'umap 1', y = 'umap 2', title = 'umap'),
-  
-    ggplot( dat_heatmap(), aes(variable, name) ) +
-      geom_tile(aes(fill = value)),
-      # scale_fill_gradient2(low=muted("blue"), high=muted("red")),
+
+    # ggplot( dat_heatmap(), aes(variable, name) ) +
+    #   geom_tile(aes(fill = value)),
+    # scale_fill_gradient2(low=muted("blue"), high=muted("red")),
   
     nrow =2 
   )
