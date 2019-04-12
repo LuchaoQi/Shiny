@@ -83,6 +83,7 @@ server <- function(input, output) {
   dat_pca_result = reactive({
     dat = merge(as.data.frame(prcomp(df())$x),as.data.frame(kmeans(df(),input$k)$cluster),by ='row.names',all.x=T)
     colnames(dat)[dim(dat)[2]] = 'Cluster'
+    colnames(dat)[1] = 'genes'
     dat = dat[order(dat$Cluster),]
     return(dat)
   })
@@ -95,7 +96,13 @@ server <- function(input, output) {
   # })
   
   output$threed_clustering <- renderPlotly({
-    plot_ly(x = dat_pca_result()$PC1, y = dat_pca_result()$PC2, z = dat_pca_result()$PC3, type="scatter3d", mode="markers", color= dat_pca_result()$Cluster)
+    plot_ly(dat_pca_result(), x = ~PC1, y = ~PC2, z = ~PC3, color = ~Cluster,type ='scatter3d',mode = 'markers', text = ~genes, hoverinfo='text') 
+    # text = ~genes
+      # %>% add_markers() %>%
+      # layout(scene = list(xaxis = list(title = 'PC1'),
+      #                     yaxis = list(title = 'PC2'),
+      #                     zaxis = list(title = 'PC3')))
+      
   })
   
   
