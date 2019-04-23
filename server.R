@@ -12,7 +12,9 @@ library(gplots)
 library(scales)
 library(Rtsne)
 library(reshape)
-library(data.table)
+library(reshape2)
+library(reticulate)
+# library(data.table)
 
 server <- function(input, output) {
   
@@ -30,15 +32,24 @@ server <- function(input, output) {
   # df = df[,is.na(colSums(df=='Error'))] %>% na.omit(df) #remove columns with 'Error' and rows with NA
   
   output$contents <- renderTable({
+    dat = cbind(row.names(df()),df()) %>% `colnames<-`(c('genes',colnames(df())))
     
     if(input$disp == "head") {
-      return(head(df()))
+      return(head(dat))
     }
     else {
-      return(df())
+      return(dat)
     }
   })
-
+  
+  # df2 = reactive({
+  #   req(input$file1)
+  #   dat <- read.table(input$file1$datapath,
+  #                     header = input$header,
+  #                     sep = input$sep,
+  #                     quote = input$quote)
+  #   return(dat)
+  # })
   
   #heatmap
   # ord <- reactive({hclust( dist(scale(df()), method = "euclidean"), method = "ward.D" )$order})
@@ -49,23 +60,38 @@ server <- function(input, output) {
     # dat = melt(read.table(input$file1$datapath,header = 1)[ord(),])
     colnames(dat)[dim(dat)[2]] = 'Cluster'
     dat = dat[order(dat$'Cluster'),][-dim(dat)[2]]
-    dat = melt(setDT(dat, keep.rownames = TRUE), "rn")
+    # dat = gather(df2(),experiments,expression,2:length(df2()[1,]))
+    dat = reshape2::melt(as.matrix(dat))
+    
+    # dat = melt(setDT(dat, keep.rownames = TRUE), "rn")
     # dat$rn = factor(dat$rn,levels = dat$rn)
     return(dat)
     # return(melt(as.matrix(dat)))
     # [,c('X2','X1','value')]
   })
   
+  
   output$heatmap = renderPlot({
     if(is.null(input$file1)){return()}
-
-    ggplot( dat_heatmap(), aes(x = variable,y = factor(rn,levels = unique(rn))) )+
+    
+    ggplot( dat_heatmap(), aes(x = Var2,y = factor(Var1,levels = unique(Var1))) )+
       geom_tile(aes(fill = value))+
       scale_fill_gradient(low="grey90", high="red") +
       labs(x= 'exp',y = 'gene')+
       theme(axis.text.y = element_text(size = 6))
   })
   
+  # 
+  # output$heatmap = renderPlot({
+  #   if(is.null(input$file1)){return()}
+  # 
+  #   ggplot( dat_heatmap(), aes(x = variable,y = factor(rn,levels = unique(rn))) )+
+  #     geom_tile(aes(fill = value))+
+  #     scale_fill_gradient(low="grey90", high="red") +
+  #     labs(x= 'exp',y = 'gene')+
+  #     theme(axis.text.y = element_text(size = 6))
+  # })
+  # 
   # dat = reactive({
   #   dat = timeclust(as.matrix(df()),
   #                   algo = input$algo,
@@ -108,10 +134,20 @@ server <- function(input, output) {
   
 
   # compare
-  
+  # beginning <- reactive({Sys.time()})
   pca = reactive({prcomp(t(df()))})
+  # end <- reactive({Sys.time()})
+  # t_prcomp <- reactive({as.numeric(beginning() - end())})
+  
+  # beginning <- reactive({Sys.time()})
   tsne = reactive({Rtsne(df())})
+  # end <- reactive({Sys.time()})
+  # t_tsne <- reactive({as.numeric(beginning() - end())})
+  
+  # beginning <- reactive({Sys.time()})
   Umap = reactive({umap(as.matrix(df()))})
+  # end <- reactive({Sys.time()})
+  # t_umap <- reactive({as.numeric(beginning() - end())})
   
   output$cluster_compare = renderPlot({grid.arrange(
     ggplot(as.data.frame(pca()$rotation),aes(x=PC1,y=PC2))+
@@ -125,7 +161,14 @@ server <- function(input, output) {
     #   geom_tile(aes(fill = value)),
     # scale_fill_gradient2(low=muted("blue"), high=muted("red")),
   
-    nrow =2 
+    
+
+    # ggplot(as.data.frame(rbind(t_prcomp(),t_tsne(),t_umap())),aes(x = c('PCA','tsne','Umap'), y = V1)) +
+    #   geom_col() + labs(x = 'Algorithms', y = 'Running time'),
+    
+    
+    ncol = 2,
+    nrow = 2 
   )
   })
 }

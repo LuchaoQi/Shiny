@@ -6,6 +6,13 @@ library(plotly)
 
 header <- dashboardHeader(title = "Uploading Files")
 sidebar <- dashboardSidebar(
+  sidebarMenu(id = "tabs",
+              menuItem("Documents", tabName = "module1"),
+              menuItem("Module", tabName = "module2")
+  ),
+  
+  tags$hr(),
+  
   fileInput("file1", "Choose txt File: expression level matrix",
             multiple = TRUE,
             accept = c("text/comma-separated-values,text/plain",
@@ -50,5 +57,9 @@ body <- dashboardBody(tableOutput("contents"),
 
 
 
+# body = dashboardBody(
+#   
+#   uiOutput("moduleUI")
+# )
 
 ui <- dashboardPage(header, sidebar, body)
