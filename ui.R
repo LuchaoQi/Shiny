@@ -7,10 +7,14 @@ library(plotly)
 header <- dashboardHeader(title = "Uploading Files")
 sidebar <- dashboardSidebar(
   sidebarMenu(id = "tabs",
-              menuItem("Documents", tabName = "module1"),
-              menuItem("Module", tabName = "module2")
+              menuItem("Documents", href='data/hw5.html')
+              # menuItem("Sample expression level matrix", href='data/expression.txt')
+              # menuItem("Download", href='https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/expression.txt')
   ),
+ 
+  downloadButton('expression.txt', 'Download expression level data'),
   
+  # tags$a(href='data/plasmid1.txt', target='blank', 'Documents'),
   tags$hr(),
   
   fileInput("file1", "Choose txt File: expression level matrix",
@@ -58,7 +62,7 @@ body <- dashboardBody(tableOutput("contents"),
 
 
 # body = dashboardBody(
-#   
+# 
 #   uiOutput("moduleUI")
 # )
 
