@@ -46,20 +46,20 @@ library(rlang)
 
 > Download sample data
 
-![](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/figrues/1.png)
+![](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/figures/1.png)
 
 > Upload gene expression data and format the  matrix
 
-![](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/figrues/2.png)
+![](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/figures/2.png)
 
 > Enter the number of clusters
 
-![](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/figrues/3.png)
+![](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/figures/3.png)
 
 > Results
 
-![](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/figrues/4.png)
-![](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/figrues/5.png)
+![](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/figures/4.png)
+![](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/figures/5.png)
 
 
 
