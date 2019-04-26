@@ -19,10 +19,11 @@ This shiny app https://luchao-qi.shinyapps.io/shiny_clustering/
 
 # System / library equirements to run locally
 
+System:
 ```
 Windows/Linux/Mac
 ```
-
+Library: 
 ```
 library(shiny)
 library(shinydashboard)
