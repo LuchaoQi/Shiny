@@ -28,8 +28,8 @@ Which genes show increasing expression and which genes show decreasing expressio
 - Principal component analysis (PCA): minimize the sum of squared distances
 
 ```{r echo = F,out.width='45%'}
-knitr::include_graphics('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_data_science_for_BME/shiny_clustering/presentation/K-means_convergence-resize.gif')
-
+knitr::include_graphics('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_data_science_for_BME/shiny_clustering/presentation/K-means_convergence.gif') 
+    
 knitr::include_graphics('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_data_science_for_BME/shiny_clustering/presentation/pca-resize.gif')
 ```
 
