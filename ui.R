@@ -7,7 +7,7 @@ library(plotly)
 header <- dashboardHeader(title = "Uploading Files")
 sidebar <- dashboardSidebar(
   sidebarMenu(id = "tabs",
-              menuItem("Documentation and Manuals", href='data/hw5.html')
+              menuItem("Documentation and Manuals", href='data/Documentation.html')
               # menuItem("Sample expression level matrix", href='data/expression.txt')
               # menuItem("Download", href='https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/expression.txt')
   ),
