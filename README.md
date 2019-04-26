@@ -12,10 +12,34 @@ This shiny app https://luchao-qi.shinyapps.io/shiny_clustering/
   - Create a heatmap of the expression matrix. Order the genes by cluster, but keep the time points in numerical order.
   - Compare the performance among PCA, T-sne, Umap analysis
 
-# Features!
+# Features
 
   - Import a txt file and format it to data frame
   - Choose the number of clusters you want
+
+# System / library equirements to run locally
+
+```
+Windows/Linux/Mac
+```
+
+```
+library(shiny)
+library(shinydashboard)
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+library(ggfortify)
+library(gridExtra)
+library(umap)
+library(gplots)
+library(scales)
+library(Rtsne)
+library(reshape)
+library(reshape2)
+library(reticulate)
+library(rlang)
+```
 
 # Manuals
 
