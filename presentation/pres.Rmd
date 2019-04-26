@@ -1,31 +1,42 @@
 ---
-output:
-  ioslides_presentation: default
-  html_document: default
+title: "R shiny presentation"
+author: "LuchaoQi"
+date: "April 25, 2019"
+output: ioslides_presentation
 ---
 
 
 ## Background
 
-Matrix contains pre-normalized expression values for 100 genes over 10 time points. Most genes have a stable background expression level, but some special genes show increased expression over the timecourse and some show decreased expression.
+Matrix contains pre-normalized expression values for 100 genes over 10 time points.  
 
+```{r echo = F,out.width='50%'}
+# a = read.table('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_data_science_for_BME/shiny_clustering/expression.txt',header = 1,row.names = 1)
+# print(head(a))
+knitr::include_graphics('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_data_science_for_BME/shiny_clustering/presentation/1.png')
+knitr::include_graphics('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_data_science_for_BME/shiny_clustering/presentation/2.png')
 
-
-## Slide with Bullets
-
-- Bullet 1
-- Bullet 2
-- Bullet 3
-
-## Slide with R Output
-
-```{r cars, echo = TRUE}
-summary(cars)
 ```
 
-## Slide with Plot
+Which genes show increasing expression and which genes show decreasing expression, and how did you determine this?
 
-```{r pressure}
-plot(pressure)
+
+## Solutions
+
+- K-means clustering: the centroids are computed by averaging the observations that were assigned to it (e.g., computing the 'mean' of the observations).
+
+- Principal component analysis (PCA): minimize the sum of squared distances
+
+```{r echo = F,out.width='45%'}
+knitr::include_graphics('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_data_science_for_BME/shiny_clustering/presentation/K-means_convergence-resize.gif')
+
+knitr::include_graphics('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_data_science_for_BME/shiny_clustering/presentation/pca-resize.gif')
 ```
+
+
+## Demo
+
+
+
+
 
