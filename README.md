@@ -1,5 +1,8 @@
 # R-shiny-clustering Documentation
 
+```
+More details can be found in this presentation: 
+```
 
 [This file](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/expression.txt) contains pre-normalized expression values for 100 genes over 10 time points. Most genes have a stable background expression level, but some special genes show increased expression over the timecourse and some show decreased expression.
 
