@@ -35,7 +35,8 @@ knitr::include_graphics('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_
 
 
 ## Demo
-#### [shiny](https://luchao-qi.shinyapps.io/shiny_clustering/)
+
+- [shiny](https://luchao-qi.shinyapps.io/shiny_clustering/)
 
 ```{r echo=F,out.width='100%'}
 knitr::include_graphics('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_data_science_for_BME/shiny_clustering/presentation/demo.gif')
