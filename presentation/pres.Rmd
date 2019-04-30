@@ -1,5 +1,5 @@
 ---
-title: "R shiny presentation"
+title: "Cluster Analysis for Gene Expression Data"
 author: "LuchaoQi"
 date: "April 30, 2019"
 output: ioslides_presentation
