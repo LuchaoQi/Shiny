@@ -22,7 +22,7 @@ System:
 Windows/Linux/Mac
 ```
 Library: 
-```R
+```{R}
 library(shiny)
 library(shinydashboard)
 library(tidyverse)
