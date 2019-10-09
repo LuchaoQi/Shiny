@@ -1,11 +1,10 @@
 ---
-title: "Cluster Analysis for Gene Expression Data"
+title: "Cluster Analysis & Visualization"
 author: "LuchaoQi"
 output:
   ioslides_presentation: default
   slidy_presentation: default
 ---
-
 
 ## Background
 
