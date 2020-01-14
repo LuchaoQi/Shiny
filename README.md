@@ -1,4 +1,6 @@
-# R-shiny-clustering Documentation
+# R-shiny-clustering Documentation  
+
+![](https://github.com/LuchaoQi/Shiny_clustering/blob/master/presentation/demo.gif?raw=true)
 
 [More details can be found in this presentation/demo](https://luchaoqi.github.io/Shiny_clustering/)
 
