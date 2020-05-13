@@ -14,8 +14,9 @@ This shiny app https://luchao-qi.shinyapps.io/shiny_clustering/
 
 # Features
 
-  - Import a txt file and format it to data frame
-  - Choose the number of clusters you want
+  - Import a txt file and format it to data frame.
+  - Choose the number of clusters you want.
+  - Visualize different clustering results so you can compare different machine learning algorithms!
 
 # System / library equirements to run locally
 
