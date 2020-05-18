@@ -13,8 +13,8 @@ Matrix contains pre-normalized expression values for 100 genes over 10 time poin
 ```{r echo = F,out.width='50%'}
 # a = read.table('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_data_science_for_BME/shiny_clustering/expression.txt',header = 1,row.names = 1)
 # print(head(a))
-knitr::include_graphics('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_data_science_for_BME/shiny_clustering/presentation/1.png')
-knitr::include_graphics('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_data_science_for_BME/shiny_clustering/presentation/2.png')
+knitr::include_graphics('https://github.com/LuchaoQi/Shiny_clustering/blob/master/presentation/1.png?raw=True')
+knitr::include_graphics('https://github.com/LuchaoQi/Shiny_clustering/blob/master/presentation/2.png?raw=True')
 
 ```
 
@@ -28,9 +28,9 @@ Which genes show increasing expression and which genes show decreasing expressio
 - Principal component analysis (PCA): minimize the sum of squared distances (T-sne,UMAP)
 
 ```{r echo = F,out.width='40%'}
-knitr::include_graphics('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_data_science_for_BME/shiny_clustering/presentation/K-means_convergence.gif') 
+knitr::include_graphics('https://github.com/LuchaoQi/Shiny_clustering/blob/master/presentation/K-means_convergence.gif?raw=True') 
     
-knitr::include_graphics('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_data_science_for_BME/shiny_clustering/presentation/pca-resize.gif')
+knitr::include_graphics('https://github.com/LuchaoQi/Shiny_clustering/blob/master/presentation/pca-resize.gif?raw=True')
 ```
 
 
@@ -38,7 +38,7 @@ knitr::include_graphics('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_
 - [shiny](https://luchao-qi.shinyapps.io/shiny_clustering/) / [github](https://github.com/LuchaoQi/Shiny_clustering)
 
 ```{r echo=F,out.width='100%'}
-knitr::include_graphics('C:/Users/lcqi/OneDrive/Desktop/Courses/introduction_to_data_science_for_BME/shiny_clustering/presentation/demo.gif')
+knitr::include_graphics('https://github.com/LuchaoQi/Shiny_clustering/blob/master/presentation/demo.gif?raw=True')
 ```
 
 
