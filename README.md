@@ -6,7 +6,7 @@
 
 [This file](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/expression.txt) contains pre-normalized expression values for 100 genes over 10 time points. Most genes have a stable background expression level, but some special genes show increased expression over the timecourse and some show decreased expression.
 
-This shiny app https://luchao-qi.shinyapps.io/shiny_clustering/
+This shiny app https://luchao-qi.shinyapps.io/shiny_clustering/ can
 
   - Cluster the genes using K-means clustering
   - Create a heatmap of the expression matrix. Order the genes by cluster, but keep the time points in numerical order.
