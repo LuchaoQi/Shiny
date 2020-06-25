@@ -18,7 +18,7 @@ This shiny app https://luchao-qi.shinyapps.io/shiny_clustering/ can
   - Choose the number of clusters you want.
   - Visualize different clustering results so you can compare different machine learning algorithms!
 
-# System / library equirements to run locally
+# System / library requirements to run locally
 
 System:
 ```
