@@ -18,46 +18,20 @@ This shiny app https://luchao-qi.shinyapps.io/shiny_clustering/ can
   - Choose the number of clusters you want.
   - Visualize different clustering results so you can compare different machine learning algorithms!
 
-# System / library requirements to run locally
 
-System:
-```
-Windows/Linux/Mac
-```
-Library: 
-```{R}
-library(shiny)
-library(shinydashboard)
-library(tidyverse)
-library(ggplot2)
-library(plotly)
-library(ggfortify)
-library(gridExtra)
-library(umap)
-library(gplots)
-library(scales)
-library(Rtsne)
-library(reshape)
-library(reshape2)
-library(reticulate)
-library(rlang)
-```
 
 # Manuals
 
-> Download sample data
 
-![](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/figures/1.png)
-
-> Upload gene expression data and format the  matrix
+* Upload your own data or download sample data on the left sidebar
 
 ![](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/figures/2.png)
 
-> Enter the number of clusters
+* Enter the number of clusters
 
 ![](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/figures/3.png)
 
-> Results
+* Results
 
 ![](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/figures/4.png)
 ![](https://raw.githubusercontent.com/LuchaoQi/Shiny_clustering/master/figures/5.png)
